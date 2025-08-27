@@ -65,15 +65,18 @@ export default {
 				}
 			},
 			backgroundImage: {
-				'hero-gradient': 'var(--hero-gradient)',
-				'card-gradient': 'var(--card-gradient)'
+				'window-gradient': 'var(--window-gradient)',
+				'abstract-pattern': 'var(--abstract-pattern)'
 			},
 			boxShadow: {
-				'elegant': 'var(--shadow-elegant)',
-				'glow': 'var(--shadow-glow)'
+				'terminal': 'var(--terminal-shadow)',
+				'glow': '0 0 20px hsl(var(--primary) / 0.5)'
 			},
 			transitionTimingFunction: {
-				'smooth': 'var(--transition-smooth)'
+				'terminal': 'var(--transition-terminal)'
+			},
+			fontFamily: {
+				'mono': ['Fira Code', 'Monaco', 'Cascadia Code', 'Ubuntu Mono', 'monospace']
 			},
 			borderRadius: {
 				lg: 'var(--radius)',

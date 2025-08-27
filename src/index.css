@@ -8,43 +8,47 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --background: 220 13% 9%;
+    --foreground: 120 100% 85%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 220 13% 12%;
+    --card-foreground: 120 100% 85%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 220 13% 12%;
+    --popover-foreground: 120 100% 85%;
 
-    --primary: 263 70% 50%;
-    --primary-foreground: 210 40% 98%;
-    --primary-glow: 263 70% 60%;
+    --primary: 120 100% 50%;
+    --primary-foreground: 220 13% 9%;
+    --primary-glow: 120 100% 60%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 220 13% 18%;
+    --secondary-foreground: 120 100% 85%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 220 13% 15%;
+    --muted-foreground: 120 20% 60%;
 
-    --accent: 263 70% 95%;
-    --accent-foreground: 263 70% 20%;
+    --accent: 120 100% 20%;
+    --accent-foreground: 120 100% 85%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 220 13% 9%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 263 70% 50%;
+    --border: 120 100% 25%;
+    --input: 220 13% 18%;
+    --ring: 120 100% 50%;
 
-    --radius: 0.75rem;
+    --radius: 0rem;
 
-    /* Portfolio specific tokens */
-    --hero-gradient: linear-gradient(135deg, hsl(263 70% 50%), hsl(293 70% 50%));
-    --card-gradient: linear-gradient(135deg, hsl(0 0% 100%), hsl(263 70% 98%));
-    --shadow-elegant: 0 10px 30px -10px hsl(263 70% 50% / 0.2);
-    --shadow-glow: 0 0 40px hsl(263 70% 60% / 0.3);
-    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    /* UNIX Terminal specific tokens */
+    --terminal-bg: 220 13% 9%;
+    --terminal-border: 120 100% 25%;
+    --terminal-text: 120 100% 85%;
+    --terminal-cursor: 120 100% 50%;
+    --terminal-shadow: 0 0 20px hsl(120 100% 50% / 0.3);
+    --window-gradient: linear-gradient(135deg, hsl(220 13% 12%), hsl(220 13% 15%));
+    --abstract-pattern: radial-gradient(circle at 25% 25%, hsl(120 100% 50% / 0.1) 0%, transparent 50%),
+                       radial-gradient(circle at 75% 75%, hsl(120 100% 30% / 0.1) 0%, transparent 50%);
+    --transition-terminal: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 
     --sidebar-background: 0 0% 98%;
 
@@ -64,40 +68,12 @@ All colors MUST be HSL.
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 263 70% 60%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-    --primary-glow: 263 70% 70%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 263 70% 70%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 263 70% 60%;
-
-    /* Dark mode portfolio tokens */
-    --hero-gradient: linear-gradient(135deg, hsl(263 70% 60%), hsl(293 70% 60%));
-    --card-gradient: linear-gradient(135deg, hsl(222.2 84% 4.9%), hsl(263 70% 8%));
-    --shadow-elegant: 0 10px 30px -10px hsl(263 70% 60% / 0.4);
-    --shadow-glow: 0 0 40px hsl(263 70% 70% / 0.5);
+    /* Dark mode uses same UNIX theme */
+    --background: 220 13% 6%;
+    --foreground: 120 100% 90%;
+    --terminal-bg: 220 13% 6%;
+    --terminal-text: 120 100% 90%;
+    --terminal-shadow: 0 0 30px hsl(120 100% 50% / 0.4);
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -115,6 +91,51 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-mono;
+    background-image: var(--abstract-pattern);
+    background-attachment: fixed;
+  }
+}
+
+@layer components {
+  .terminal-window {
+    @apply bg-card border border-primary/30 shadow-[var(--terminal-shadow)] rounded-none;
+    background: var(--window-gradient);
+  }
+  
+  .terminal-header {
+    @apply flex items-center justify-between p-3 border-b border-primary/30 bg-muted/20;
+  }
+  
+  .terminal-controls {
+    @apply flex space-x-2;
+  }
+  
+  .terminal-dot {
+    @apply w-3 h-3 rounded-full;
+  }
+  
+  .executable-item {
+    @apply flex items-center space-x-3 p-3 hover:bg-accent/20 transition-colors cursor-pointer border-l-2 border-transparent hover:border-primary;
+  }
+  
+  .cursor-blink {
+    animation: blink 1s infinite;
+  }
+  
+  @keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+  }
+  
+  @keyframes typewriter {
+    from { width: 0; }
+    to { width: 100%; }
+  }
+  
+  .typewriter {
+    overflow: hidden;
+    white-space: nowrap;
+    animation: typewriter 2s steps(40, end);
   }
 }
