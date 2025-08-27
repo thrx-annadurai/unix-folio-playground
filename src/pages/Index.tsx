@@ -26,6 +26,7 @@ import { useState, useEffect } from "react";
 
 const Index = () => {
   const [currentTime, setCurrentTime] = useState(new Date());
+  const [startTime] = useState(new Date());
   const [typedText, setTypedText] = useState("");
   const [activeExecutable, setActiveExecutable] = useState<string | null>("about");
   const [runningProcesses, setRunningProcesses] = useState<string[]>(["about"]);
@@ -41,6 +42,22 @@ const Index = () => {
     const timer = setInterval(() => setCurrentTime(new Date()), 1000);
     return () => clearInterval(timer);
   }, []);
+
+  const getUptime = () => {
+    const uptimeMs = currentTime.getTime() - startTime.getTime();
+    const uptimeSeconds = Math.floor(uptimeMs / 1000);
+    const hours = Math.floor(uptimeSeconds / 3600);
+    const minutes = Math.floor((uptimeSeconds % 3600) / 60);
+    const seconds = uptimeSeconds % 60;
+    
+    if (hours > 0) {
+      return `${hours}h ${minutes}m ${seconds}s`;
+    } else if (minutes > 0) {
+      return `${minutes}m ${seconds}s`;
+    } else {
+      return `${seconds}s`;
+    }
+  };
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -458,8 +475,7 @@ const Index = () => {
           <div className="text-muted-foreground text-sm mb-4">
             <div>System: UNIX Portfolio v2.4.1</div>
             <div>User: john_doe@developer</div>
-            <div>Uptime: 1337 days</div>
-            <div>Load average: 0.42, 0.38, 0.35</div>
+            <div>Uptime: {getUptime()}</div>
             <div>Running processes: {runningProcesses.length}</div>
           </div>
           {/* Terminal Output */}
@@ -565,7 +581,7 @@ const Index = () => {
       <div className="terminal-window mx-4 mb-4">
         <div className="p-4 text-xs font-mono text-muted-foreground text-center">
           <div>© 2024 john_doe@dev.local | Built with React, TypeScript, Tailwind</div>
-          <div className="mt-1">System uptime: {Math.floor(Date.now() / 86400000)} days | Load: {Math.random().toFixed(2)} | Active processes: {runningProcesses.length}</div>
+          <div className="mt-1">System uptime: {getUptime()} | Active processes: {runningProcesses.length}</div>
         </div>
       </div>
     </div>
