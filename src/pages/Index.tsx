@@ -1,10 +1,7 @@
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import { 
   Terminal, 
   Folder, 
-  FileText, 
   Code2, 
   Database, 
   Server, 
@@ -14,13 +11,16 @@ import {
   Square,
   X,
   ExternalLink,
-  Github,
   Mail,
-  Linkedin,
   ChevronRight,
   User,
   Briefcase,
-  Settings
+  Settings,
+  Phone,
+  MapPin,
+  Calendar,
+  Award,
+  GraduationCap
 } from "lucide-react";
 import { useState, useEffect } from "react";
 
@@ -32,11 +32,11 @@ const Index = () => {
   const [runningProcesses, setRunningProcesses] = useState<string[]>(["about"]);
   const [terminalOutput, setTerminalOutput] = useState<string[]>([
     "System initialized...",
-    "Loading user profile...",
-    "Welcome to UNIX Portfolio v2.4.1"
+    "Loading student profile...",
+    "Welcome to Theeraj's Data Science Terminal v1.0"
   ]);
   
-  const welcomeText = "Welcome to UNIX Portfolio v2.4.1";
+  const welcomeText = "Welcome to Theeraj's Data Science Terminal v1.0";
 
   useEffect(() => {
     const timer = setInterval(() => setCurrentTime(new Date()), 1000);
@@ -114,86 +114,105 @@ const Index = () => {
     {
       name: "about.exe",
       icon: <User className="h-5 w-5" />,
-      description: "System information and user profile",
-      lastModified: "2024-08-27",
-      size: "2.4KB"
+      description: "Student profile and education info",
+      lastModified: "2025-01-15",
+      size: "3.2KB"
     },
     {
       name: "skills.exe", 
       icon: <Code2 className="h-5 w-5" />,
-      description: "Technical capabilities and tools",
-      lastModified: "2024-08-26", 
-      size: "5.1KB"
+      description: "Data science and ML capabilities",
+      lastModified: "2025-01-14", 
+      size: "4.8KB"
     },
     {
       name: "projects.exe",
       icon: <Briefcase className="h-5 w-5" />,
-      description: "Portfolio and project showcase",
-      lastModified: "2024-08-25",
-      size: "8.7KB"
+      description: "ML projects and data solutions",
+      lastModified: "2025-01-13",
+      size: "7.3KB"
+    },
+    {
+      name: "experience.exe",
+      icon: <Database className="h-5 w-5" />,
+      description: "Internship and work experience",
+      lastModified: "2025-01-12",
+      size: "2.9KB"
     },
     {
       name: "contact.exe",
       icon: <Server className="h-5 w-5" />,
-      description: "Network connections and communication",
-      lastModified: "2024-08-27",
-      size: "1.2KB"
+      description: "Network connections and links",
+      lastModified: "2025-01-15",
+      size: "1.5KB"
     }
   ];
 
   const skills = [
-    "C++", "Python", "JavaScript", "TypeScript", "React", "Node.js", 
-    "Linux", "Docker", "PostgreSQL", "MongoDB", "AWS", "Git", "Vim", "Bash"
+    "Python", "SQL", "Machine Learning", "Deep Learning", "NLP", "RAG", 
+    "Hugging Face", "PostgreSQL", "AWS", "Django", "Alteryx", "Jupyter", "Git", "Transformers"
   ];
 
   const projects = [
     {
-      title: "linux-file-manager.exe",
-      description: "Advanced file management system with UNIX permissions",
-      tech: ["C++", "Qt", "Linux", "SQLite"],
-      processes: "3 running",
-      memory: "124MB",
-      github: "https://github.com/johndoe/linux-file-manager",
-      demo: "https://demo.example.com/file-manager"
+      title: "loan-default-predictor.exe",
+      description: "ML model using logistic regression to assess loan default risk with high accuracy",
+      tech: ["Python", "Machine Learning", "Django", "Jupyter"],
+      processes: "2 running",
+      memory: "156MB",
+      github: "https://github.com/TheerajSubhakaarAS/Credit-risk-analysis.git",
+      demo: "#"
     },
     {
-      title: "web-scraper-daemon.exe", 
-      description: "Multi-threaded data extraction service",
-      tech: ["Python", "asyncio", "PostgreSQL", "Docker"],
-      processes: "8 running",
+      title: "query-wizard.exe", 
+      description: "AI-powered engine translating natural language to SQL queries using Gemini",
+      tech: ["Python", "Gemini", "NLP", "SQL"],
+      processes: "1 running",
       memory: "89MB",
-      github: "https://github.com/johndoe/web-scraper",
-      demo: "https://demo.example.com/scraper"
+      github: "https://github.com/TheerajSubhakaarAS/Query_Wizard",
+      demo: "#"
     },
     {
-      title: "terminal-portfolio.exe",
-      description: "Interactive command-line portfolio interface",
-      tech: ["React", "TypeScript", "Terminal.js", "CSS"],
+      title: "smart-ocr-extractor.exe",
+      description: "Automated text extraction tool with layout precision for bank receipts",
+      tech: ["Python", "Surya OCR", "Computer Vision"],
       processes: "1 running", 
-      memory: "45MB",
-      github: "https://github.com/johndoe/terminal-portfolio",
-      demo: "https://portfolio.johndoe.dev"
+      memory: "67MB",
+      github: "#",
+      demo: "#"
     }
   ];
 
   const contactLinks = [
     {
       name: "email",
-      url: "mailto:john.doe@dev.local",
-      display: "john.doe@dev.local",
+      url: "mailto:theerajsubhakaar1975@gmail.com",
+      display: "theerajsubhakaar1975@gmail.com",
       icon: <Mail className="h-4 w-4" />
     },
     {
+      name: "phone",
+      url: "tel:+919080320789",
+      display: "+91-9080320789",
+      icon: <Phone className="h-4 w-4" />
+    },
+    {
       name: "github",
-      url: "https://github.com/johndoe",
-      display: "github.com/johndoe",
-      icon: <Github className="h-4 w-4" />
+      url: "https://github.com/TheerajSubhakaarAS",
+      display: "TheerajSubhakaarAS",
+      icon: <Database className="h-4 w-4" />
     },
     {
       name: "linkedin",
-      url: "https://linkedin.com/in/johndoe",
-      display: "linkedin.com/in/johndoe",
-      icon: <Linkedin className="h-4 w-4" />
+      url: "https://www.linkedin.com/in/theeraj-subhakaar-as/",
+      display: "theeraj-subhakaar-as",
+      icon: <Server className="h-4 w-4" />
+    },
+    {
+      name: "portfolio",
+      url: "https://theerajsubhakaaras.netlify.app",
+      display: "theerajsubhakaaras.netlify.app",
+      icon: <Monitor className="h-4 w-4" />
     }
   ];
 
@@ -233,44 +252,60 @@ const Index = () => {
                 <div className="space-y-3">
                   <div className="flex items-center space-x-2">
                     <Database className="h-5 w-5 text-primary" />
-                    <span className="font-mono text-sm">Backend Engineering</span>
+                    <span className="font-mono text-sm">Machine Learning</span>
                   </div>
                   <p className="text-sm text-muted-foreground font-mono">
-                    Building scalable server architectures, APIs, and database systems with focus on performance and reliability.
+                    Developing predictive models and ML algorithms for data-driven decision making and risk assessment.
                   </p>
                 </div>
                 <div className="space-y-3">
                   <div className="flex items-center space-x-2">
                     <Code2 className="h-5 w-5 text-primary" />
-                    <span className="font-mono text-sm">System Programming</span>
+                    <span className="font-mono text-sm">Data Science</span>
                   </div>
                   <p className="text-sm text-muted-foreground font-mono">
-                    Low-level programming, operating systems, and optimization for high-performance applications.
+                    Extracting insights from complex datasets using Python, SQL, and advanced analytics techniques.
                   </p>
                 </div>
                 <div className="space-y-3">
                   <div className="flex items-center space-x-2">
                     <Monitor className="h-5 w-5 text-primary" />
-                    <span className="font-mono text-sm">DevOps & Infrastructure</span>
+                    <span className="font-mono text-sm">NLP & AI</span>
                   </div>
                   <p className="text-sm text-muted-foreground font-mono">
-                    Container orchestration, CI/CD pipelines, and cloud infrastructure management.
+                    Building intelligent systems with natural language processing, transformers, and deep learning.
                   </p>
                 </div>
               </div>
               <div className="mt-6 pt-6 border-t border-primary/20">
                 <div className="text-sm font-mono space-y-2">
                   <div className="flex justify-between">
-                    <span className="text-muted-foreground">Experience:</span>
-                    <span className="text-primary">5+ years</span>
+                    <span className="text-muted-foreground">Name:</span>
+                    <span className="text-primary">Theeraj Subhakaar AS</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-muted-foreground">Title:</span>
+                    <span className="text-primary">Data Science Student</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-muted-foreground">Education:</span>
+                    <span className="text-primary">Integrated M.Sc. Data Science</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-muted-foreground">Institution:</span>
+                    <span className="text-primary">CIT, Coimbatore</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-muted-foreground">CGPA:</span>
+                    <span className="text-primary">8.72</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-muted-foreground">Location:</span>
-                    <span className="text-primary">Remote / San Francisco</span>
+                    <span className="text-primary">Chennai / Coimbatore, India</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-muted-foreground">Status:</span>
-                    <span className="text-green-500">Available for hire</span>
+                    <span className="text-green-500">Available for opportunities</span>
                   </div>
                 </div>
               </div>
@@ -296,20 +331,43 @@ const Index = () => {
               </div>
               <div className="space-y-4 text-sm font-mono">
                 <div>
-                  <h3 className="text-primary mb-2">Proficiency Levels:</h3>
+                  <h3 className="text-primary mb-2">Technical Skills:</h3>
                   <div className="space-y-1">
                     <div className="flex justify-between">
-                      <span>Expert:</span>
-                      <span className="text-primary">C++, Python, Linux, Git</span>
+                      <span>Programming:</span>
+                      <span className="text-primary">Python, SQL</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span>ML/AI:</span>
+                      <span className="text-primary">Machine Learning, Deep Learning, NLP, RAG</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span>Frameworks:</span>
+                      <span className="text-primary">Hugging Face, Django, Transformers</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span>Tools:</span>
+                      <span className="text-primary">Jupyter, Alteryx, Git, AWS, PostgreSQL</span>
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <h3 className="text-primary mb-2">Areas of Interest:</h3>
+                  <div className="space-y-1">
+                    <div className="flex justify-between">
+                      <span>Core:</span>
+                      <span className="text-primary">Machine Learning, DBMS, NLP</span>
                     </div>
                     <div className="flex justify-between">
                       <span>Advanced:</span>
-                      <span className="text-primary">JavaScript, React, Docker, PostgreSQL</span>
+                      <span className="text-primary">Deep Learning, Transformers (Basic)</span>
                     </div>
-                    <div className="flex justify-between">
-                      <span>Intermediate:</span>
-                      <span className="text-primary">TypeScript, Node.js, AWS, MongoDB</span>
-                    </div>
+                  </div>
+                </div>
+                <div>
+                  <h3 className="text-primary mb-2">Soft Skills:</h3>
+                  <div className="space-y-1">
+                    <div className="text-primary">Adaptability • Critical Thinking • Problem-Solving • Teamwork</div>
                   </div>
                 </div>
               </div>
@@ -390,6 +448,74 @@ const Index = () => {
           </div>
         );
 
+      case 'experience':
+        return (
+          <div className="terminal-window">
+            {windowHeader('experience.exe')}
+            <div className="p-6">
+              <div className="space-y-6">
+                <div className="border border-primary/20 p-4 hover:border-primary/40 transition-colors">
+                  <div className="flex justify-between items-start mb-3">
+                    <h3 className="text-lg font-mono text-primary">Data Scientist - Intern</h3>
+                    <div className="text-xs text-muted-foreground font-mono">Mar 2025 - Present</div>
+                  </div>
+                  <div className="text-sm text-muted-foreground font-mono mb-2">Yubi (Formerly CAPL) • Chennai, India</div>
+                  <p className="text-sm text-muted-foreground font-mono mb-4">
+                    Developed StandAlone API Module for Transaction Classification with exceptional efficiency - 3.5 seconds per 400 transactions.
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    <span className="bg-accent/30 text-accent-foreground px-2 py-1 text-xs font-mono border border-primary/20">PostgreSQL</span>
+                    <span className="bg-accent/30 text-accent-foreground px-2 py-1 text-xs font-mono border border-primary/20">AWS</span>
+                    <span className="bg-accent/30 text-accent-foreground px-2 py-1 text-xs font-mono border border-primary/20">Argo</span>
+                  </div>
+                </div>
+                
+                <div className="border border-primary/20 p-4 hover:border-primary/40 transition-colors">
+                  <div className="flex justify-between items-start mb-3">
+                    <h3 className="text-lg font-mono text-primary">Backend/AIML - Intern</h3>
+                    <div className="text-xs text-muted-foreground font-mono">Jan 2025 - Feb 2025</div>
+                  </div>
+                  <div className="text-sm text-muted-foreground font-mono mb-2">Open Data Fabric • Coimbatore, India</div>
+                  <p className="text-sm text-muted-foreground font-mono mb-4">
+                    Developed a back-end API for healthcare application with focus on data processing and ML integration.
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    <span className="bg-accent/30 text-accent-foreground px-2 py-1 text-xs font-mono border border-primary/20">PostgreSQL</span>
+                    <span className="bg-accent/30 text-accent-foreground px-2 py-1 text-xs font-mono border border-primary/20">AWS</span>
+                    <span className="bg-accent/30 text-accent-foreground px-2 py-1 text-xs font-mono border border-primary/20">VS Code</span>
+                  </div>
+                </div>
+
+                <div className="border border-primary/20 p-4 hover:border-primary/40 transition-colors">
+                  <div className="flex justify-between items-start mb-3">
+                    <h3 className="text-lg font-mono text-primary">Assurance Analyst - Intern</h3>
+                    <div className="text-xs text-muted-foreground font-mono">Jul 2023 - Nov 2023</div>
+                  </div>
+                  <div className="text-sm text-muted-foreground font-mono mb-2">S.R. Batliboi & Associates LLP (EY) • Chennai, India</div>
+                  <p className="text-sm text-muted-foreground font-mono mb-4">
+                    Engaged in financial data preprocessing and audit support using Alteryx. Worked on Stable Diffusion for image generation from textual input.
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    <span className="bg-accent/30 text-accent-foreground px-2 py-1 text-xs font-mono border border-primary/20">Alteryx</span>
+                    <span className="bg-accent/30 text-accent-foreground px-2 py-1 text-xs font-mono border border-primary/20">Stable Diffusion</span>
+                  </div>
+                </div>
+
+                <div className="border border-primary/20 p-4 hover:border-primary/40 transition-colors">
+                  <div className="flex justify-between items-start mb-3">
+                    <h3 className="text-lg font-mono text-primary">Head of Editor</h3>
+                    <div className="text-xs text-muted-foreground font-mono">Jun 2022 - May 2023</div>
+                  </div>
+                  <div className="text-sm text-muted-foreground font-mono mb-2">FOSS CLUB, Department of Computing, CIT, Coimbatore</div>
+                  <p className="text-sm text-muted-foreground font-mono mb-4">
+                    Led editorial responsibilities for the FOSS (Free and Open Source Software) Club, managing content creation and technical documentation.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        );
+
       case 'contact':
         return (
           <div className="terminal-window">
@@ -425,7 +551,6 @@ const Index = () => {
                     className="w-full bg-primary hover:bg-primary/80 text-primary-foreground font-mono"
                     onClick={() => {
                       setTerminalOutput(prev => [...prev, `$ ./initiate_connection`, `Scanning available networks...`, `Connection protocols loaded.`, `Ready to establish communication.`]);
-                      // You can add actual contact form logic here
                     }}
                   >
                     $ ./initiate_connection
@@ -433,8 +558,8 @@ const Index = () => {
                 </div>
                 <div className="text-xs text-muted-foreground">
                   <div>Response time: &lt; 24 hours</div>
-                  <div>Encryption: PGP available on request</div>
-                  <div>Timezone: PST (UTC-8)</div>
+                  <div>Location: Chennai/Coimbatore, India</div>
+                  <div>Timezone: IST (UTC+5:30)</div>
                 </div>
               </div>
             </div>
@@ -453,7 +578,7 @@ const Index = () => {
         <div className="terminal-header">
           <div className="flex items-center space-x-3">
             <Terminal className="h-5 w-5 text-primary" />
-            <span className="text-sm">unix-portfolio@localhost:~$</span>
+            <span className="text-sm">theeraj@datascience-terminal:~$</span>
           </div>
           <div className="flex items-center space-x-4">
             <span className="text-xs text-muted-foreground">
@@ -473,8 +598,10 @@ const Index = () => {
             <span className="cursor-blink text-primary">█</span>
           </div>
           <div className="text-muted-foreground text-sm mb-4">
-            <div>System: UNIX Portfolio v2.4.1</div>
-            <div>User: john_doe@developer</div>
+            <div>System: Data Science Terminal v1.0</div>
+            <div>User: theeraj_subhakaar@student</div>
+            <div>Education: Integrated M.Sc. Data Science (CGPA: 8.72)</div>
+            <div>Location: Chennai/Coimbatore, India</div>
             <div>Uptime: {getUptime()}</div>
             <div>Running processes: {runningProcesses.length}</div>
           </div>
@@ -580,8 +707,8 @@ const Index = () => {
       {/* Terminal Footer */}
       <div className="terminal-window mx-4 mb-4">
         <div className="p-4 text-xs font-mono text-muted-foreground text-center">
-          <div>© 2024 john_doe@dev.local | Built with React, TypeScript, Tailwind</div>
-          <div className="mt-1">System uptime: {getUptime()} | Active processes: {runningProcesses.length}</div>
+          <div>© 2025 theeraj_subhakaar@student | Built with React, TypeScript, Tailwind</div>
+          <div className="mt-1">System uptime: {getUptime()} | Active processes: {runningProcesses.length} | CIT Coimbatore</div>
         </div>
       </div>
     </div>
