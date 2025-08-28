@@ -1,10 +1,10 @@
 import { Button } from "@/components/ui/button";
-import { 
-  Terminal, 
-  Folder, 
-  Code2, 
-  Database, 
-  Server, 
+import {
+  Terminal,
+  Folder,
+  Code2,
+  Database,
+  Server,
   Monitor,
   Play,
   Minus,
@@ -20,7 +20,8 @@ import {
   MapPin,
   Calendar,
   Award,
-  GraduationCap
+  GraduationCap,
+  Github
 } from "lucide-react";
 import { useState, useEffect } from "react";
 
@@ -35,7 +36,7 @@ const Index = () => {
     "Loading student profile...",
     "Welcome to Theeraj's Data Science Terminal v1.0"
   ]);
-  
+
   const welcomeText = "Welcome to Theeraj's Data Science Terminal v1.0";
 
   useEffect(() => {
@@ -49,7 +50,7 @@ const Index = () => {
     const hours = Math.floor(uptimeSeconds / 3600);
     const minutes = Math.floor((uptimeSeconds % 3600) / 60);
     const seconds = uptimeSeconds % 60;
-    
+
     if (hours > 0) {
       return `${hours}h ${minutes}m ${seconds}s`;
     } else if (minutes > 0) {
@@ -70,12 +71,13 @@ const Index = () => {
 
   const executeProgram = (programName: string) => {
     const cleanName = programName.replace('.exe', '');
+    console.log('Executing program:', programName, 'Clean name:', cleanName);
     setActiveExecutable(cleanName);
-    
+
     if (!runningProcesses.includes(cleanName)) {
       setRunningProcesses(prev => [...prev, cleanName]);
     }
-    
+
     setTerminalOutput(prev => [
       ...prev,
       `$ ./${programName}`,
@@ -91,7 +93,7 @@ const Index = () => {
       const remaining = runningProcesses.filter(p => p !== processName);
       setActiveExecutable(remaining.length > 0 ? remaining[0] : null);
     }
-    
+
     setTerminalOutput(prev => [
       ...prev,
       `Process ${processName} terminated.`
@@ -103,7 +105,7 @@ const Index = () => {
       const otherProcesses = runningProcesses.filter(p => p !== processName);
       setActiveExecutable(otherProcesses.length > 0 ? otherProcesses[0] : null);
     }
-    
+
     setTerminalOutput(prev => [
       ...prev,
       `Process ${processName} minimized.`
@@ -119,10 +121,10 @@ const Index = () => {
       size: "3.2KB"
     },
     {
-      name: "skills.exe", 
+      name: "skills.exe",
       icon: <Code2 className="h-5 w-5" />,
       description: "Data science and ML capabilities",
-      lastModified: "2025-01-14", 
+      lastModified: "2025-01-14",
       size: "4.8KB"
     },
     {
@@ -149,7 +151,7 @@ const Index = () => {
   ];
 
   const skills = [
-    "Python", "SQL", "Machine Learning", "Deep Learning", "NLP", "RAG", 
+    "Python", "SQL", "Machine Learning", "Deep Learning", "NLP", "RAG",
     "Hugging Face", "PostgreSQL", "AWS", "Django", "Alteryx", "Jupyter", "Git", "Transformers"
   ];
 
@@ -164,7 +166,7 @@ const Index = () => {
       demo: "#"
     },
     {
-      title: "query-wizard.exe", 
+      title: "query-wizard.exe",
       description: "AI-powered engine translating natural language to SQL queries using Gemini",
       tech: ["Python", "Gemini", "NLP", "SQL"],
       processes: "1 running",
@@ -176,7 +178,7 @@ const Index = () => {
       title: "smart-ocr-extractor.exe",
       description: "Automated text extraction tool with layout precision for bank receipts",
       tech: ["Python", "Surya OCR", "Computer Vision"],
-      processes: "1 running", 
+      processes: "1 running",
       memory: "67MB",
       github: "#",
       demo: "#"
@@ -200,7 +202,7 @@ const Index = () => {
       name: "github",
       url: "https://github.com/TheerajSubhakaarAS",
       display: "TheerajSubhakaarAS",
-      icon: <Database className="h-4 w-4" />
+      icon: <Github className="h-4 w-4" />
     },
     {
       name: "linkedin",
@@ -217,9 +219,11 @@ const Index = () => {
   ];
 
   const renderActiveWindow = () => {
+    console.log('Rendering active window. Active executable:', activeExecutable, 'Running processes:', runningProcesses);
     if (!activeExecutable) return null;
 
     const isRunning = runningProcesses.includes(activeExecutable);
+    console.log('Is running:', isRunning);
     if (!isRunning) return null;
 
     const windowHeader = (title: string) => (
@@ -229,12 +233,12 @@ const Index = () => {
           <span className="text-sm font-mono">{title} - Running</span>
         </div>
         <div className="terminal-controls">
-          <Minus 
-            className="h-4 w-4 text-yellow-500 cursor-pointer hover:bg-yellow-500/20 rounded p-0.5" 
+          <Minus
+            className="h-4 w-4 text-yellow-500 cursor-pointer hover:bg-yellow-500/20 rounded p-0.5"
             onClick={() => minimizeProcess(activeExecutable)}
           />
           <Square className="h-4 w-4 text-blue-500 cursor-pointer hover:bg-blue-500/20 rounded p-0.5" />
-          <X 
+          <X
             className="h-4 w-4 text-red-500 cursor-pointer hover:bg-red-500/20 rounded p-0.5"
             onClick={() => closeProcess(activeExecutable)}
           />
@@ -242,6 +246,7 @@ const Index = () => {
       </div>
     );
 
+    console.log('Switch statement - activeExecutable:', activeExecutable);
     switch (activeExecutable) {
       case 'about':
         return (
@@ -320,8 +325,8 @@ const Index = () => {
             <div className="p-6">
               <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-3 mb-6">
                 {skills.map((skill, index) => (
-                  <div 
-                    key={index} 
+                  <div
+                    key={index}
                     className="bg-muted/30 border border-primary/30 p-3 hover:border-primary hover:bg-accent/20 transition-all cursor-pointer group"
                     onClick={() => setTerminalOutput(prev => [...prev, `$ man ${skill.toLowerCase()}`, `Loading documentation for ${skill}...`])}
                   >
@@ -394,8 +399,8 @@ const Index = () => {
                     </p>
                     <div className="flex flex-wrap gap-2 mb-4">
                       {project.tech.map((tech, techIndex) => (
-                        <span 
-                          key={techIndex} 
+                        <span
+                          key={techIndex}
                           className="bg-accent/30 text-accent-foreground px-2 py-1 text-xs font-mono border border-primary/20"
                         >
                           {tech}
@@ -403,7 +408,7 @@ const Index = () => {
                       ))}
                     </div>
                     <div className="flex space-x-4 text-xs font-mono">
-                      <button 
+                      <button
                         className="text-primary hover:underline flex items-center space-x-1"
                         onClick={() => {
                           setTerminalOutput(prev => [...prev, `$ ./run ${project.title}`, `Starting ${project.title}...`, `Process started successfully.`]);
@@ -412,7 +417,7 @@ const Index = () => {
                         <Play className="h-3 w-3" />
                         <span>./run</span>
                       </button>
-                      <button 
+                      <button
                         className="text-primary hover:underline flex items-center space-x-1"
                         onClick={() => {
                           setTerminalOutput(prev => [...prev, `$ ./debug ${project.title}`, `Debugging mode enabled.`, `Breakpoints set.`]);
@@ -421,7 +426,7 @@ const Index = () => {
                         <Settings className="h-3 w-3" />
                         <span>./debug</span>
                       </button>
-                      <a 
+                      <a
                         href={project.github}
                         target="_blank"
                         rel="noopener noreferrer"
@@ -431,7 +436,7 @@ const Index = () => {
                         <Github className="h-3 w-3" />
                         <span>./source</span>
                       </a>
-                      <a 
+                      <a
                         href={project.demo}
                         target="_blank"
                         rel="noopener noreferrer"
@@ -469,7 +474,7 @@ const Index = () => {
                     <span className="bg-accent/30 text-accent-foreground px-2 py-1 text-xs font-mono border border-primary/20">Argo</span>
                   </div>
                 </div>
-                
+
                 <div className="border border-primary/20 p-4 hover:border-primary/40 transition-colors">
                   <div className="flex justify-between items-start mb-3">
                     <h3 className="text-lg font-mono text-primary">Backend/AIML - Intern</h3>
@@ -533,7 +538,7 @@ const Index = () => {
                         {link.icon}
                         <span>{link.name}://</span>
                       </div>
-                      <a 
+                      <a
                         href={link.url}
                         target="_blank"
                         rel="noopener noreferrer"
@@ -547,7 +552,7 @@ const Index = () => {
                   ))}
                 </div>
                 <div className="pt-4 border-t border-primary/20">
-                  <Button 
+                  <Button
                     className="w-full bg-primary hover:bg-primary/80 text-primary-foreground font-mono"
                     onClick={() => {
                       setTerminalOutput(prev => [...prev, `$ ./initiate_connection`, `Scanning available networks...`, `Connection protocols loaded.`, `Ready to establish communication.`]);
@@ -619,7 +624,7 @@ const Index = () => {
       {/* File System - Main Content */}
       <div className="container mx-auto px-4 pb-8">
         <div className="grid lg:grid-cols-4 gap-6">
-          
+
           {/* Directory Listing */}
           <div className="lg:col-span-1">
             <div className="terminal-window h-fit">
@@ -630,8 +635,8 @@ const Index = () => {
               <div className="p-4">
                 <div className="space-y-2">
                   {executables.map((exe, index) => (
-                    <div 
-                      key={index} 
+                    <div
+                      key={index}
                       className={`executable-item ${activeExecutable === exe.name.replace('.exe', '') ? 'border-primary bg-accent/10' : ''}`}
                       onClick={() => executeProgram(exe.name)}
                     >
@@ -651,7 +656,7 @@ const Index = () => {
                     </div>
                   ))}
                 </div>
-                
+
                 {/* Process Manager */}
                 {runningProcesses.length > 0 && (
                   <div className="mt-6 pt-4 border-t border-primary/20">
@@ -661,13 +666,13 @@ const Index = () => {
                         <div key={index} className="flex items-center justify-between text-xs">
                           <span className="text-primary">{process}.exe</span>
                           <div className="flex space-x-1">
-                            <button 
+                            <button
                               onClick={() => setActiveExecutable(process)}
                               className="text-blue-500 hover:text-blue-400"
                             >
                               ↗
                             </button>
-                            <button 
+                            <button
                               onClick={() => closeProcess(process)}
                               className="text-red-500 hover:text-red-400"
                             >
@@ -686,7 +691,7 @@ const Index = () => {
           {/* Main Window */}
           <div className="lg:col-span-3 space-y-6">
             {renderActiveWindow()}
-            
+
             {!activeExecutable && (
               <div className="terminal-window">
                 <div className="terminal-header">
